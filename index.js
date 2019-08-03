@@ -28,13 +28,11 @@ async function updateGist(stats) {
   }
 
   const lines = [];
-  for (let i = 0; i < 4; i++) {
+  for (let i = 0; i < 5; i++) {
     const data = stats.data.languages[i];
-    console.log(data)
     var { name, percent, text: time } = data;
-    console.log(data)
-    if(name.length > 10) {
-      name = name.slice(10)
+    if(name.length > 11) {
+      name = name.slice(0,8).trim() + '...'
     }
     const line = [
       name.padEnd(11),
