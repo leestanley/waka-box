@@ -35,6 +35,7 @@ async function updateGist(stats) {
     if(name.length > 11) {
       name = name.slice(0,8).trim() + '...'
     }
+    console.log(data)
     const line = [
       name.padEnd(11),
       time.padEnd(14),
