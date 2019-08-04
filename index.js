@@ -30,7 +30,8 @@ async function updateGist(stats) {
   const lines = [];
   for (let i = 0; i < 5; i++) {
     const data = stats.data.languages[i];
-    var { name, percent, text: time } = data;
+    const { percent, text: time } = data;
+    var name = data.name
     if(name.length > 11) {
       name = name.slice(0,8).trim() + '...'
     }
