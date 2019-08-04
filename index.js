@@ -17,6 +17,9 @@ const octokit = new Octokit({
 async function main() {
   const stats = await wakatime.getMyStats({ range: RANGE.LAST_7_DAYS });
   console.log(stats)
+  console.log(stats.data.languages[0])
+  console.log(stats.data.languages[1])
+  console.log(stats.data.languages[2])
   await updateGist(stats);
 }
 
