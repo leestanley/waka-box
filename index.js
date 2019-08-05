@@ -16,14 +16,12 @@ const octokit = new Octokit({
 
 async function main() {
   const stats = await wakatime.getMyStats({ range: RANGE.LAST_7_DAYS });
-  console.log(stats)
-  console.log(stats.data.languages[0])
-  console.log(stats.data.languages[1])
-  console.log(stats.data.languages[2])
+  // console.log(stats)
   await updateGist(stats);
 }
 
 async function updateGist(stats) {
+  console.log(stats.data.languages[0]);
   let gist;
   try {
     gist = await octokit.gists.get({ gist_id: gistId });
@@ -35,11 +33,10 @@ async function updateGist(stats) {
   for (let i = 0; i < 5; i++) {
     const data = stats.data.languages[i];
     const { percent, text: time } = data;
-    var name = data.name
-    if(name.length > 11) {
-      name = name.slice(0,8).trim() + '...'
+    var name = data.name;
+    if (name.length > 11) {
+      name = name.slice(0, 8).trim() + "...";
     }
-    console.log(data)
     const line = [
       name.padEnd(11),
       time.padEnd(14),
